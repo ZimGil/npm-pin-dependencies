@@ -1,6 +1,6 @@
 import { readWantedLockfile } from '@pnpm/lockfile-file';
 import type { LockFileObject } from '@yarnpkg/lockfile';
-import * as lockfile from '@yarnpkg/lockfile';
+import lockfile from '@yarnpkg/lockfile';
 import { parseSyml } from '@yarnpkg/parsers';
 import type { JSONSchemaType, Schema } from 'ajv';
 import Ajv from 'ajv';
@@ -645,6 +645,7 @@ export const getContextKey = (lockFiles: Record<ContextKey, LockFile | undefined
     ContextKey,
     LockFile,
   ][];
+
   if (definedLockFiles.length === 0) {
     throw new Error(`Lock file is missing.`);
   }
@@ -660,6 +661,7 @@ export const getContextKey = (lockFiles: Record<ContextKey, LockFile | undefined
       mtime: Date;
     },
   ][];
+
   if (timedLockFiles.length === 0) {
     throw new Error(`Unable to decide which lock file to use.`);
   }
@@ -886,6 +888,10 @@ const readLockFile = async ({ ctx }: { ctx: PinDependenciesContext }): Promise<P
     await Promise.all(
       lockFileConfigurations.map(config => {
         const path = findUpLockPaths.find(absolutePath => absolutePath.endsWith(config.fileName))!;
+
+        if (!path) {
+          return Promise.all([config, undefined, undefined]);
+        }
 
         return resolveLockFileContent({ config, path });
       }),
