@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.0](https://github.com/smarlhens/npm-pin-dependencies/compare/v0.8.3...v0.9.0) (2023-12-22)
+
+
+### Features
+
+* ignore local path as version ([ef27aba](https://github.com/smarlhens/npm-pin-dependencies/commit/ef27abaad1aecca345725538f34675e51a490da7))
+* support linked packages ([9475178](https://github.com/smarlhens/npm-pin-dependencies/commit/947517801df1056f163895cf17c0a45aaa52cd7b))
+* support pnpm ([7bf6c61](https://github.com/smarlhens/npm-pin-dependencies/commit/7bf6c612f06b857ec858a35a74f06801091cd13f))
+
 ## [0.8.3](https://github.com/smarlhens/npm-pin-dependencies/compare/v0.8.2...v0.8.3) (2023-10-13)
 
 
